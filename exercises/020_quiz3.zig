@@ -21,8 +21,8 @@ pub fn main() void {
 //
 // This function prints, but does not return anything.
 //
-fn printPowersOfTwo(numbers: [4]u16) u16 {
-    loop (numbers) |n| {
+fn printPowersOfTwo(numbers: [4]u16) void {
+    for (numbers) |n| {
         std.debug.print("{} ", .{twoToThe(n)});
     }
 }
@@ -35,7 +35,7 @@ fn twoToThe(number: u16) u16 {
     var n: u16 = 0;
     var total: u16 = 1;
 
-    loop (n < number) : (n += 1) {
+    while (n < number) : (n += 1) {
         total *= 2;
     }
 
