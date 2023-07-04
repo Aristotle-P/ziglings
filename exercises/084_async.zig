@@ -53,6 +53,8 @@ pub fn main() void {
 
 fn foo() void {
     print("foo() A\n", .{});
-    suspend {}
+    suspend {
+        return;
+    }
     print("foo() B\n", .{});
 }

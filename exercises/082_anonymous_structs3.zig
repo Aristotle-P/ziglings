@@ -81,8 +81,9 @@ fn printTuple(tuple: anytype) void {
     //
     //         @typeInfo(Circle).Struct.fields
     //
-    // This will be an array of StructFields.
-    const fields = @typeInfo(@TypeOf(tuple)).Struct.fields;
+    // This will be an array of StructFields.const
+    const tuple_type = @TypeOf(tuple);
+    const fields = @typeInfo(tuple_type).Struct.fields;
     // 2. Loop through each field. This must be done at compile
     // time.
     //
@@ -118,8 +119,7 @@ fn printTuple(tuple: anytype) void {
         print("\"{s}\"({any}):{any} ", .{
             field.name,
             field.type,
-            // @field(field, "default_value"),
-            @field(tuple, field.default_value),
+            @field(tuple, field.name),
         });
     }
 }
